@@ -6,7 +6,7 @@
 //  Copyright © 2016年 JDYang. All rights reserved.
 //
 
-//导入UIKit框架
+//导入UIKit框架才能用CG开头的东西
 import UIKit
 //给系统类做扩展
 extension UIBarButtonItem{

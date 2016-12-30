@@ -8,8 +8,21 @@
 
 import UIKit
 
+fileprivate let kTitleViewHeight : CGFloat = 40
+
 class HomeViewController: UIViewController {
 
+    // MARK:- 懒加载属性
+    fileprivate lazy var pageTitleView : PageTitleView = {
+        //设置菜单标题尺寸
+        let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenWidth, height: kTitleViewHeight)
+        let titles = ["推荐", "游戏", "娱乐", "趣玩"]//设置菜单标题显示内容文字
+        let titleView = PageTitleView(frame: titleFrame, titles: titles)//保存到pageTitleView中
+        //titleView.backgroundColor = UIColor.purple
+        return titleView
+    }()
+    
+    // MARK:- 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,14 +32,18 @@ class HomeViewController: UIViewController {
 
 }
 
-
-
 // MARK: -设置UI页面
     extension HomeViewController {
         
         fileprivate func setUpUI() {
+            //0.不需要调整UIScrollview的内边距.  系统默认会帮我们调整所以设置不调整内边距
+            automaticallyAdjustsScrollViewInsets = false
+            
             //1.设置导航栏
             setUpNavigationBar()
+            
+            //2.添加TitleView
+            view.addSubview(pageTitleView)
         }
             //设置导航栏
         fileprivate func setUpNavigationBar() {
