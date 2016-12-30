@@ -4,7 +4,7 @@
 //
 //  Created by xiaoyang on 2016/12/29.
 //  Copyright © 2016年 JDYang. All rights reserved.
-//
+//  封装标题的view  PageTitleView
 
 import UIKit
 
